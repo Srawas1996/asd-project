@@ -11,11 +11,9 @@ import java.util.Arrays;
 import java.util.Collection;
 
 public class CardFrm extends MainFrame {
-    private CreditAccountController creditAccountController;
     private CardBtnActions btnActions;
     private String expDate;
     private String ccNumber;
-    private CardFrm cardFrame;
 
     public CardFrm() {
         setFrame(this);

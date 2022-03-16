@@ -18,6 +18,7 @@ public abstract class AccountDialog extends JDialog {
     JLabel JLabel5 = new JLabel();
     JLabel JLabel6 = new JLabel();
     JLabel JLabel7 = new JLabel();
+    JLabel JLabel8 = new JLabel();
     JTextField JTextField_NAME = new JTextField();
     JTextField JTextField_CT = new JTextField();
     JTextField JTextField_ST = new JTextField();
@@ -26,7 +27,6 @@ public abstract class AccountDialog extends JDialog {
     JTextField JTextField_EM = new JTextField();
     JButton JButton_OK = new JButton();
     JButton JButton_Cancel = new JButton();
-    JLabel JLabel8 = new JLabel();
     JTextField JTextField_ACNR = new JTextField();
 
     public AccountDialog(MainFrame parent, String title) {
@@ -86,12 +86,12 @@ public abstract class AccountDialog extends JDialog {
         JButton_OK.setText("OK");
         JButton_OK.setActionCommand("OK");
         getContentPane().add(JButton_OK);
-        JButton_OK.setBounds(48, 276, 84, 24);
+        JButton_OK.setBounds(48, 260, 84, 24);
 
         JButton_Cancel.setText("Cancel");
         JButton_Cancel.setActionCommand("Cancel");
         getContentPane().add(JButton_Cancel);
-        JButton_Cancel.setBounds(156, 230, 84, 24);
+        JButton_Cancel.setBounds(156, 260, 84, 24);
 
         JButton_OK.addActionListener(okAction);
         JButton_Cancel.addActionListener(cancelAction);
