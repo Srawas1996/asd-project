@@ -57,13 +57,6 @@ public class CardFrm extends MainFrame {
         );
     }
 
-	public CreditAccountController getCreditAccountController() {
-		return creditAccountController;
-	}
-
-	public void setCreditAccountController(CreditAccountController creditAccountController) {
-		this.creditAccountController = creditAccountController;
-	}
 
 	public CardBtnActions getBtnActions() {
 		return btnActions;
@@ -89,13 +82,6 @@ public class CardFrm extends MainFrame {
 		this.ccNumber = ccNumber;
 	}
 
-	public CardFrm getCardFrame() {
-		return cardFrame;
-	}
-
-	public void setCardFrame(CardFrm cardFrame) {
-		this.cardFrame = cardFrame;
-	}
     
     
 }

@@ -41,10 +41,6 @@ public class JDialog_Deposit extends JDialog
 		JButton_OK.setActionCommand("OK");
 		getContentPane().add(JButton_OK);
 		JButton_OK.setBounds(36,84,84,24);
-		JButton_Cancel.setText("Cancel");
-		JButton_Cancel.setActionCommand("Cancel");
-		getContentPane().add(JButton_Cancel);
-		JButton_Cancel.setBounds(156,84,84,24);
 		getContentPane().add(JTextField_Deposit);
 		JTextField_Deposit.setBounds(84,48,144,24);
 		//}}

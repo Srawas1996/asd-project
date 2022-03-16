@@ -15,7 +15,7 @@ public class CreditCardApplication {
     public static void main(String[] args) {
         CreditAccountController creditAccountController = new CreditAccountController();
         LocalDate dob = LocalDate.now();
-        Account creditAccount = creditAccountController.createAccount("xxxssnxx","Salim", new Address("street", "City", "IA", "52556"), "salim96tr@gmail.com", dob, AccountType.CREDIT, CreditCardType.GOLD);
+        Account creditAccount = creditAccountController.createCreditCardAccount("xxxssnxx","Salim", new Address("street", "City", "IA", "52556"), "salim96tr@gmail.com", dob, AccountType.CREDIT, CreditCardType.GOLD);
 
         creditAccountController.deposit(creditAccount.getId(), 100, "Deposit");
         creditAccountController.deposit(creditAccount.getId(), 500, "Deposit");

@@ -92,13 +92,13 @@ public  class AccountEntry implements Storable<String> {
 	@Override
     public String toString() {
         return "[" +
-                "id='" + id + '\'' + "\n"+
-                ", date=" + date + "\n"+
-                ", amount=" + amount + "\n"+
-                ", description='" + description + '\''+ "\n"+
-                ", fromAccountNumber='" + fromAccountNumber + '\'' + "\n"+
-                ", fromPersonName='" + fromPersonName + '\'' + "\n"+
-                ", balance=" + account.getBalance() + "\n"+ 
-                ']';
+                "id='" + id  +
+                ", date=" + date +
+                ", amount=" + amount +
+                ", description='" + description +
+                ", fromAccountNumber='" + fromAccountNumber +
+                ", fromPersonName='" + fromPersonName +
+                ",\n balance=" + account.getBalance() +
+                 ']';
     }
 }

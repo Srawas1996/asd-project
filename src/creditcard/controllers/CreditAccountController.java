@@ -18,7 +18,7 @@ public class CreditAccountController implements Controller {
         accountService = new CreditCardAccountServiceImpl();
     }
 
-    public Account createAccount(String ccn, String name, Address address, String email, LocalDate dob, AccountType accountType, CreditCardType cardType) {
+    public Account createCreditCardAccount(String ccn, String name, Address address, String email, LocalDate dob, AccountType accountType, CreditCardType cardType) {
         Customer person = new Person(ccn, name, address, email, dob);
         Account account = CreditCardFactory.createCredCard(cardType, ccn, person);
 
