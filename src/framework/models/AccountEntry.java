@@ -99,6 +99,6 @@ public  class AccountEntry implements Storable<String> {
                 ", fromAccountNumber='" + fromAccountNumber +
                 ", fromPersonName='" + fromPersonName +
                 ",\n balance=" + account.getBalance() +
-                 ']';
+                 ']' + "\n";
     }
 }

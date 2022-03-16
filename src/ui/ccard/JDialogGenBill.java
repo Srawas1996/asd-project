@@ -13,7 +13,7 @@ public class JDialogGenBill extends AccountDialog {
 	JScrollPane JScrollPane1 = new JScrollPane();
     String billString;
 	Collection<AccountEntry> accountEntries;
-	private JTextField JTextField1 = new JTextField();
+	private  JTextArea JTextField1 = new JTextArea();
 	private JButton JButton_OK = new JButton();
 
 	public JDialogGenBill(CardFrm parent, Collection<AccountEntry> accountEntries) {
