@@ -82,8 +82,8 @@ public class JDialog_AddCCAccount extends AccountDialog {
 
     void checkingSelected(MouseEvent event) {
         JRadioButton_Gold.setSelected(true);
-        JRadioButton_Silver.setSelected(true);
-        JRadioButton_Bronze.setSelected(true);
+        JRadioButton_Silver.setSelected(false);
+        JRadioButton_Bronze.setSelected(false);
     }
 
     void savingSelected(MouseEvent event) {
@@ -94,8 +94,8 @@ public class JDialog_AddCCAccount extends AccountDialog {
     }
 
     void JRadioButtonBronze_mouseClicked(MouseEvent event) {
-        JRadioButton_Gold.setSelected(true);
-        JRadioButton_Silver.setSelected(true);
+        JRadioButton_Gold.setSelected(false);
+        JRadioButton_Silver.setSelected(false);
         JRadioButton_Bronze.setSelected(true);
 
     }
