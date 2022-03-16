@@ -8,6 +8,6 @@ import framework.storage.Storage;
 public class AccountDAO extends DAO<Account,String> {
     @Override
     public Storage<Account, String> createStorageFactory() {
-        return new MemoryStorage<Account,String>();
+        return new MemoryStorage<>();
     }
 }

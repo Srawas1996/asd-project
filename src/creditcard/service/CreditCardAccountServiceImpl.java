@@ -11,7 +11,7 @@ import framework.repositories.AccountEntryRepository;
 import framework.repositories.AccountRepository;
 import framework.repositories.CustomerRepository;
 import framework.services.AccountService;
-import framework.storage.RepositoryEvents;
+import framework.enums.RepositoryEvents;
 
 import java.time.LocalDate;
 import java.time.Period;
@@ -25,7 +25,16 @@ public class CreditCardAccountServiceImpl implements AccountService {
     CustomerRepository customerRepository;
     AccountEntryRepository accountEntryRepository;
 
-    public CreditCardAccountServiceImpl() {
+    private static CreditCardAccountServiceImpl instance = null;
+
+    public static CreditCardAccountServiceImpl getInstance(){
+        if (instance == null){
+            instance = new CreditCardAccountServiceImpl();
+        }
+            return instance;
+    }
+
+    private CreditCardAccountServiceImpl() {
         accountRepository = new AccountRepository();
         accountRepository.addObserver(new AccountUpdateObserver(), RepositoryEvents.POST_UPDATE);
         customerRepository = new CustomerRepository();
@@ -34,7 +43,7 @@ public class CreditCardAccountServiceImpl implements AccountService {
     }
 
     @Override
-    public Account createAccount(Account account, Customer customer) {
+    public Account accountSaved(Account account, Customer customer) {
         Customer dbCustomer = customerRepository.loadOne(customer.getId());
         if (dbCustomer == null) {
             customerRepository.save(customer);
@@ -54,7 +63,7 @@ public class CreditCardAccountServiceImpl implements AccountService {
             throw new IllegalArgumentException();
         }
 
-        AccountEntry entry = new AccountEntry(-amount, "Deposit", accountNumber, "");
+        AccountEntry entry = new AccountEntry(-amount, "Deposit", accountNumber);
         entry.setAccount(account);
         accountEntryRepository.save(entry);
         account.addEntry(entry);
@@ -68,7 +77,7 @@ public class CreditCardAccountServiceImpl implements AccountService {
             throw new IllegalArgumentException();
         }
 
-        AccountEntry entry = new AccountEntry(amount, "Withdraw", accountNumber, "");
+        AccountEntry entry = new AccountEntry(amount, "Withdraw", accountNumber);
         entry.setAccount(account);
         accountEntryRepository.save(entry);
         account.addEntry(entry);
@@ -102,31 +111,6 @@ public class CreditCardAccountServiceImpl implements AccountService {
             return 0;
         }
         return account.getMinPaymentStrategy().calculateInterest(balance);
-    }
-
-
-    public AccountRepository getAccountRepository() {
-        return accountRepository;
-    }
-
-    public void setAccountRepository(AccountRepository accountRepository) {
-        this.accountRepository = accountRepository;
-    }
-
-    public CustomerRepository getCustomerRepository() {
-        return customerRepository;
-    }
-
-    public void setCustomerRepository(CustomerRepository customerRepository) {
-        this.customerRepository = customerRepository;
-    }
-
-    public AccountEntryRepository getAccountEntryRepository() {
-        return accountEntryRepository;
-    }
-
-    public void setAccountEntryRepository(AccountEntryRepository accountEntryRepository) {
-        this.accountEntryRepository = accountEntryRepository;
     }
 
     public Collection<AccountEntry> getMonthlyBilling(String accountNumber) {

@@ -13,6 +13,7 @@ public class MinPaymentStrategyFactory {
     private static BronzeCreditCardMinPaymentStrategy bronzeCCMinPaymentStrategy;
     private static final NoCreditCardMinPaymentStrategy noCCMinPaymentStrategy = new NoCreditCardMinPaymentStrategy();
 
+
     public static InterestStrategy getMinPaymentStrategy(CreditCardType cardType) {
 
         if (cardType == CreditCardType.BRONZE) {

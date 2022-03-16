@@ -16,13 +16,13 @@ public  class Account implements Storable<String> {
     private Customer customer;
     private AccountType accountType;
     private Double balance = 0.0;
-    private List<AccountEntry> entryList;
+    private List<AccountEntry> accountEntries;
 
     public Account(String id, Customer customer, AccountType accountType) {
         this.id = id;
         this.customer = customer;
         this.accountType = accountType;
-        entryList = new ArrayList<AccountEntry>();
+		accountEntries = new ArrayList<>();
     }
 
     @Override
@@ -31,12 +31,12 @@ public  class Account implements Storable<String> {
     }
 
     public void addEntry(AccountEntry accountEntry){
-        entryList.add(accountEntry);
+		accountEntries.add(accountEntry);
     }
 
     public double getBalance() {
         double balance = 0;
-        for (AccountEntry entry : entryList) {
+        for (AccountEntry entry : accountEntries) {
             balance += entry.getAmount();
         }
         return balance;
@@ -44,10 +44,6 @@ public  class Account implements Storable<String> {
 
 	public String getId() {
 		return id;
-	}
-
-	public void setId(String id) {
-		this.id = id;
 	}
 
 	public InterestStrategy getInterestStrategy() {
@@ -75,11 +71,7 @@ public  class Account implements Storable<String> {
 	}
 
 	public List<AccountEntry> getEntryList() {
-		return entryList;
-	}
-
-	public void setEntryList(List<AccountEntry> entryList) {
-		this.entryList = entryList;
+		return accountEntries;
 	}
 
 	public void setBalance(Double balance) {

@@ -35,62 +35,38 @@ public abstract  class Customer implements Storable<String> {
 		this.transactionStrategy = transactionStrategy;
 	}
 
-
-
 	public String getId() {
 		return id;
 	}
-
-
 
 	public void setId(String id) {
 		this.id = id;
 	}
 
-
-
 	public String getName() {
 		return name;
 	}
-
-
 
 	public void setName(String name) {
 		this.name = name;
 	}
 
-
-
 	public String getEmail() {
 		return email;
 	}
 
-
-
 	public void setEmail(String email) {
 		this.email = email;
 	}
-
-
 
 	public CustomerType getCustomerType() {
 		return customerType;
 	}
 
 
-
-	public void setCustomerType(CustomerType customerType) {
-		this.customerType = customerType;
-	}
-
 	public TransactionAlertStrategy getTransactionStrategy() {
 		return transactionStrategy;
 	}
-
-	public void setTransactionStrategy(TransactionAlertStrategy transactionStrategy) {
-		this.transactionStrategy = transactionStrategy;
-	}
-
 
 	@Override
     public String getStorageKey() {

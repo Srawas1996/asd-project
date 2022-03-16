@@ -2,5 +2,5 @@ package framework.observer;
 
 public interface Observer<T> {
 
-    public void update(T o);
+     void update(T o);
 }

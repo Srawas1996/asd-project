@@ -10,7 +10,7 @@ import framework.repositories.AccountEntryRepository;
 import framework.repositories.AccountRepository;
 import framework.repositories.CustomerRepository;
 import framework.services.AccountService;
-import framework.storage.RepositoryEvents;
+import framework.enums.RepositoryEvents;
 
 import java.util.Collection;
 
@@ -22,7 +22,8 @@ public class AccountServiceImpl implements AccountService {
 	AccountEntryRepository accountEntryRepository;
 
 	// Singleton instance
-	private static AccountServiceImpl instance;
+	private static AccountServiceImpl instance = null;
+
 
 	public static AccountServiceImpl getInstance() {
 		if (instance == null) {
@@ -31,7 +32,7 @@ public class AccountServiceImpl implements AccountService {
 		return instance;
 	}
 
-	public AccountServiceImpl(){
+	private AccountServiceImpl(){
 		accountRepository = new AccountRepository();
 		accountRepository.addObserver(new AccountUpdateObserver(), RepositoryEvents.POST_UPDATE);
 		customerRepository = new CustomerRepository();
@@ -40,7 +41,7 @@ public class AccountServiceImpl implements AccountService {
 	}
 
 	@Override
-	public Account createAccount(Account account, Customer customer) {
+	public Account accountSaved(Account account, Customer customer) {
 		Customer dbCustomer = customerRepository.loadOne(customer.getId());
 		if(dbCustomer == null){
 			customerRepository.save(customer);
@@ -60,7 +61,7 @@ public class AccountServiceImpl implements AccountService {
 			throw new IllegalArgumentException();
 		}
 
-		AccountEntry entry = new AccountEntry(amount, description, accountNumber, "");
+		AccountEntry entry = new AccountEntry(amount, description, accountNumber);
 		entry.setAccount(account);
 		accountEntryRepository.save(entry);
 		account.addEntry(entry);
@@ -74,7 +75,7 @@ public class AccountServiceImpl implements AccountService {
 			throw new IllegalArgumentException();
 		}
 
-		AccountEntry entry = new AccountEntry(-amount, "Withdraw", accountNumber, "");
+		AccountEntry entry = new AccountEntry(-amount, "Withdraw", accountNumber);
 		entry.setAccount(account);
 		accountEntryRepository.save(entry);
 		account.addEntry(entry);

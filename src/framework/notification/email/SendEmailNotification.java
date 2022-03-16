@@ -6,14 +6,7 @@ public class SendEmailNotification implements Notifications{
     public SendEmailNotification(EmailMessage emailMessage) {
         this.emailMessage = emailMessage;
     }
-
-    public EmailMessage getEmailMessage() {
-        return emailMessage;
-    }
-
-    public void setEmailMessage(EmailMessage emailMessage) {
-        this.emailMessage = emailMessage;
-    }
+    
 
     @Override
     public void send() {

@@ -15,14 +15,14 @@ public class CreditAccountController implements Controller {
     CreditCardAccountServiceImpl accountService;
 
     public CreditAccountController() {
-        accountService = new CreditCardAccountServiceImpl();
+        accountService = CreditCardAccountServiceImpl.getInstance();
     }
 
-    public Account createCreditCardAccount(String ccn, String name, Address address, String email, LocalDate dob, AccountType accountType, CreditCardType cardType) {
-        Customer person = new Person(ccn, name, address, email, dob);
-        Account account = CreditCardFactory.createCredCard(cardType, ccn, person);
+    public Account createCreditCardAccount(String creditCardNumber, String name, Address address, String email, LocalDate dateOfBirth, AccountType accountType, CreditCardType cardType) {
+        Customer person = new Person(creditCardNumber, name, address, email, dateOfBirth);
+        Account account = CreditCardFactory.createCredCard(cardType, creditCardNumber, person);
 
-        return accountService.createAccount(account, person);
+        return accountService.accountSaved(account, person);
     }
 
 
