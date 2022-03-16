@@ -1,5 +1,7 @@
 package ui.bank;
 
+import ui.MainFrame;
+
 import javax.swing.*;
 import java.awt.*;
 
@@ -8,10 +10,10 @@ import java.awt.*;
 public class JDialog_Withdraw extends JDialog
 {
    
-    private BankFrm parentframe;
+    private MainFrame parentframe;
     private String accnr;
 
-	public JDialog_Withdraw(BankFrm parent, String aaccnr)
+	public JDialog_Withdraw(MainFrame parent, String aaccnr)
 	{
 		super(parent);
 		parentframe=parent;

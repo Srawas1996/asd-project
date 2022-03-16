@@ -1,5 +1,6 @@
 package banking.controller;
 
+import banking.service.AccountServiceImpl;
 import framework.enums.AccountType;
 import framework.enums.CustomerType;
 import framework.interfaces.Controller;
@@ -12,6 +13,10 @@ import java.util.UUID;
 
 public class AccountController implements Controller {
     AccountService accountService;
+
+    public AccountController() {
+        accountService = AccountServiceImpl.getInstance();
+    }
 
     public AccountController(AccountService accountService) {
         this.accountService = accountService;

@@ -1,5 +1,7 @@
 package ui.bank;
 
+import ui.MainFrame;
+
 import javax.swing.*;
 import java.awt.*;
 
@@ -7,10 +9,10 @@ public class JDialog_Deposit extends JDialog
 {
     
 
-    private BankFrm parentframe;
+    private MainFrame parentframe;
     private String accnr;
     
-	public JDialog_Deposit(BankFrm parent, String aaccnr)
+	public JDialog_Deposit(MainFrame parent, String aaccnr)
 	{
 		super(parent);
 		parentframe=parent;
