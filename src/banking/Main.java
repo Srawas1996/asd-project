@@ -12,7 +12,7 @@ public class Main {
 
     public static void main (String[] args){
 
-        AccountServiceImpl accountService = new AccountServiceImpl();
+        AccountServiceImpl accountService = AccountServiceImpl.getInstance();
         AccountController accountController = new AccountController(accountService);
 
 

@@ -12,18 +12,17 @@ public  class AccountEntry implements Storable<String> {
     private double amount;
     private String description;
     private String fromAccountNumber;
-    private String fromPersonName;
+
     private Account account;
 
 
-    public AccountEntry(double amount, String description, String fromAccountNumber, String fromPersonName) {
+    public AccountEntry(double amount, String description, String fromAccountNumber) {
         super();
         this.id = UUID.randomUUID().toString();
         this.date = LocalDate.now();
         this.amount = amount;
         this.description = description;
         this.fromAccountNumber = fromAccountNumber;
-        this.fromPersonName = fromPersonName;
     }
 
     @Override
@@ -37,16 +36,8 @@ public  class AccountEntry implements Storable<String> {
 		return id;
 	}
 
-	public void setId(String id) {
-		this.id = id;
-	}
-
 	public LocalDate getDate() {
 		return date;
-	}
-
-	public void setDate(LocalDate date) {
-		this.date = date;
 	}
 
 	public double getAmount() {
@@ -59,26 +50,6 @@ public  class AccountEntry implements Storable<String> {
 
 	public String getDescription() {
 		return description;
-	}
-
-	public void setDescription(String description) {
-		this.description = description;
-	}
-
-	public String getFromAccountNumber() {
-		return fromAccountNumber;
-	}
-
-	public void setFromAccountNumber(String fromAccountNumber) {
-		this.fromAccountNumber = fromAccountNumber;
-	}
-
-	public String getFromPersonName() {
-		return fromPersonName;
-	}
-
-	public void setFromPersonName(String fromPersonName) {
-		this.fromPersonName = fromPersonName;
 	}
 
 	public Account getAccount() {
@@ -97,7 +68,6 @@ public  class AccountEntry implements Storable<String> {
                 ", amount=" + amount +
                 ", description='" + description +
                 ", fromAccountNumber='" + fromAccountNumber +
-                ", fromPersonName='" + fromPersonName +
                 ",\n balance=" + account.getBalance() +
                  ']' + "\n";
     }

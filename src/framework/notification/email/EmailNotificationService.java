@@ -11,8 +11,6 @@ import java.util.Properties;
 
 public class EmailNotificationService {
 
-    public EmailNotificationService() {
-    }
 
     private void sendMail(EmailMessage emailMessage) {
 
@@ -42,7 +40,6 @@ public class EmailNotificationService {
             mimeBodyPart.setContent(emailMessage.getBody(), "text/html");
 
             MimeBodyPart attachmentBodyPart = new MimeBodyPart();
-//            attachmentBodyPart.attachFile(new File("pom.xml"));
 
             Multipart multipart = new MimeMultipart();
             multipart.addBodyPart(mimeBodyPart);

@@ -23,19 +23,26 @@ public class AccountController implements Controller {
     }
 
     @Override
-    public Account createBankingAccount(CustomerType customerType, String accountNumber, String name, Address address, String email, LocalDate dob, AccountType accountType,int numberOfEmployees) {
+    public Account createBankingAccount(CustomerType customerType, String accountNumber, String name, Address address, String email,
+                                        LocalDate dob, AccountType accountType,int numberOfEmployees) {
+        return CreateFactoryAccount(customerType,accountNumber,name,address,email,dob,accountType,numberOfEmployees);
+    }
 
-            UUID uuid = UUID.randomUUID();
-            Account account;
-            if (customerType.equals(CustomerType.PERSON)) {
-                Customer personCustomer = new Person(uuid.toString(), name, address, email, dob);
-                account = new Account(accountNumber, personCustomer, accountType);
-                return accountService.createAccount(account, personCustomer);
-            } else {
-                Customer companyCustomer = new Company(uuid.toString(),name,address,email,numberOfEmployees);
-                account = new Account(accountNumber,companyCustomer,accountType);
-                return accountService.createAccount(account,companyCustomer);
-            }
+
+    private Account CreateFactoryAccount(CustomerType customerType, String accountNumber, String name, Address address, String email,
+                                         LocalDate dob, AccountType accountType,int numberOfEmployees){
+        UUID uuid = UUID.randomUUID();
+        Account account;
+        if (customerType.equals(CustomerType.PERSON)) {
+            Customer personCustomer = new Person(uuid.toString(), name, address, email, dob);
+            account = new Account(accountNumber, personCustomer, accountType);
+            return accountService.accountSaved(account, personCustomer);
+        } else {
+            Customer companyCustomer = new Company(uuid.toString(),name,address,email,numberOfEmployees);
+            account = new Account(accountNumber,companyCustomer,accountType);
+            return accountService.accountSaved(account,companyCustomer);
+        }
+
     }
 
     public void addInterest(){
