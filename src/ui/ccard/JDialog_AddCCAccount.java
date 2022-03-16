@@ -12,6 +12,7 @@ public class JDialog_AddCCAccount extends AccountDialog {
     JRadioButton JRadioButton_Gold;
     JRadioButton JRadioButton_Silver;
     JRadioButton JRadioButton_Bronze;
+    JTextField JTextField_Email;
     JTextField JTextField_CCNR;
     JTextField JTextField_ExpDate;
 
@@ -25,6 +26,7 @@ public class JDialog_AddCCAccount extends AccountDialog {
         JRadioButton_Gold = new JRadioButton();
         JRadioButton_Silver = new JRadioButton();
         JRadioButton_Bronze = new JRadioButton();
+        JTextField_Email = new JTextField();
         JTextField_CCNR = new JTextField();
         JTextField_ExpDate = new JTextField();
 
@@ -42,6 +44,12 @@ public class JDialog_AddCCAccount extends AccountDialog {
         JRadioButton_Bronze.setActionCommand("Savings");
         getContentPane().add(JRadioButton_Bronze);
         JRadioButton_Bronze.setBounds(144, 22, 84, 24);
+
+
+        getJLabel8().setText("Email");
+        getContentPane().add(getJLabel8());
+        getJLabel8().setForeground(java.awt.Color.black);
+        getJLabel8().setBounds(12, 181, 96, 24);
 
         getJLabel6().setText("CC number");
         getContentPane().add(getJLabel6());
@@ -64,6 +72,7 @@ public class JDialog_AddCCAccount extends AccountDialog {
 
     @Override
     protected void okActionListener() {
+
         cardFrame.setCcNumber(JTextField_CCNR.getText());
         cardFrame.setExpDate(JTextField_ExpDate.getText());
     }
