@@ -8,9 +8,10 @@ import framework.enums.CreditCardType;
 import framework.models.Customer;
 
 public class CreditCardFactory {
-	
+
+     static CreditCard creditCard;
+
     public static CreditCard createCredCard(CreditCardType cardType, String id, Customer customer) {
-        CreditCard creditCard = null;
 
         if (cardType == CreditCardType.BRONZE) {
             creditCard = new BronzeCreditCard(id, customer);

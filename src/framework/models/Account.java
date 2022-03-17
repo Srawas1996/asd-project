@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-public  class Account implements Storable<String> {
+public class Account implements Storable<String> {
 	
     private String id;
     private InterestStrategy interestStrategy;
