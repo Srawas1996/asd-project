@@ -5,7 +5,6 @@ import framework.models.Account;
 import framework.models.AccountEntry;
 import framework.models.Customer;
 import framework.observers.AccountEntryObserver;
-import framework.observers.AccountUpdateObserver;
 import framework.repositories.AccountEntryRepository;
 import framework.repositories.AccountRepository;
 import framework.repositories.CustomerRepository;
@@ -32,7 +31,6 @@ public class AccountServiceImpl implements AccountService {
 
 	private AccountServiceImpl(){
 		accountRepository = new AccountRepository();
-		//accountRepository.addObserver(new AccountUpdateObserver());
 		customerRepository = new CustomerRepository();
 		accountEntryRepository = new AccountEntryRepository();
 		accountEntryRepository.addObserver(new AccountEntryObserver());
