@@ -36,7 +36,6 @@ public interface  Controller {
         throw new UnsupportedOperationException();
     }
 
-     void addInterest();
 
 
 

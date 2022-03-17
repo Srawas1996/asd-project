@@ -52,9 +52,4 @@ public class CreditAccountController implements Controller {
         return accountService.getMonthlyBilling(accountNumber);
     }
 
-    @Override
-    public void addInterest() {
-
-    }
-
 }
