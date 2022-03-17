@@ -11,7 +11,6 @@ import framework.repositories.AccountEntryRepository;
 import framework.repositories.AccountRepository;
 import framework.repositories.CustomerRepository;
 import framework.services.AccountService;
-import framework.enums.RepositoryEvents;
 
 import java.time.LocalDate;
 import java.time.Period;
@@ -36,10 +35,10 @@ public class CreditCardAccountServiceImpl implements AccountService {
 
     private CreditCardAccountServiceImpl() {
         accountRepository = new AccountRepository();
-        accountRepository.addObserver(new AccountUpdateObserver(), RepositoryEvents.POST_UPDATE);
+        accountRepository.addObserver(new AccountUpdateObserver());
         customerRepository = new CustomerRepository();
         accountEntryRepository = new AccountEntryRepository();
-        accountEntryRepository.addObserver(new AccountEntryObserver(), RepositoryEvents.POST_SAVE);
+        accountEntryRepository.addObserver(new AccountEntryObserver());
     }
 
     @Override

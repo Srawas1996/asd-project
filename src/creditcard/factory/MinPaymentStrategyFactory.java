@@ -19,7 +19,7 @@ public class MinPaymentStrategyFactory {
         if (cardType == CreditCardType.BRONZE) {
             if(bronzeCCMinPaymentStrategy == null)
                 bronzeCCMinPaymentStrategy = new BronzeCreditCardMinPaymentStrategy();
-
+            return bronzeCCMinPaymentStrategy;
         } else if (cardType == CreditCardType.GOLD) {
             if(goldCCMinPaymentStrategy == null)
                 goldCCMinPaymentStrategy = new GoldCreditCardMinPaymentStrategy();

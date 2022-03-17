@@ -1,28 +1,17 @@
 package framework.observer;
 
-import java.util.HashSet;
-import java.util.Map;
-import java.util.Set;
+import java.util.*;
 
-public interface Observable<EventType extends framework.interfaces.EventType,T> {
+public interface Observable<T> {
 
-    Map<framework.interfaces.EventType, Set<Observer>> getObserversList();
+    List<Observer> getObserversList();
 
-    default void addObserver(Observer observer, EventType repositoryEvents){
-        Set<Observer> observers;
-
-        if(getObserversList().containsKey(repositoryEvents)){
-            observers = getObserversList().get(repositoryEvents);
-        }
-
-        else{
-            observers = new HashSet<>();
-            getObserversList().put(repositoryEvents, observers);
-        }
+    default void addObserver(Observer observer){
+        List<Observer> observers = getObserversList();
         observers.add(observer);
     }
 
 
-    void notify(EventType event,T obj);
+    void notify(T obj);
 
 }

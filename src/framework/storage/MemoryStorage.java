@@ -5,7 +5,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class MemoryStorage<O extends Storable<K>,K > implements Storage<O,K> {
-    Map<K,O> data = new HashMap<K,O>();
+    Map<K,O> data = new HashMap<>();
 
     @Override
     public void create(O obj) {

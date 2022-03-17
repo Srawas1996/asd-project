@@ -1,20 +1,15 @@
 package framework.storage;
 
-import framework.enums.RepositoryEvents;
-import framework.interfaces.EventType;
 import framework.observer.Observable;
 import framework.observer.Observer;
 
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Set;
+import java.util.*;
 
-public abstract class EntityRepository<O extends Storable<K>,K> implements Observable<RepositoryEvents,O> {
+public abstract class EntityRepository<O extends Storable<K>,K> implements Observable<O> {
     DAO<O,K> dao;
-    Map<EventType, Set<Observer>> observersList = new HashMap<>();
+    List<Observer> observersList = new ArrayList<>();
 
-    public Map<EventType, Set<Observer>> getObserversList(){
+    public List<Observer> getObserversList(){
         return observersList;
     }
 
@@ -25,31 +20,25 @@ public abstract class EntityRepository<O extends Storable<K>,K> implements Obser
     public abstract DAO<O,K> getDao();
 
     @Override
-    public void notify(RepositoryEvents event,O obj ){
-        if (!observersList.containsKey(event)) {
-          return;
-        }
-
-        for(Observer observer : observersList.get(event)){
+    public void notify(O obj ){
+        for(Observer observer : observersList){
             observer.update(obj);
         }
     }
 
     public final void save(O obj){
-        notify(RepositoryEvents.PRE_SAVE,obj);
         this.dao.create(obj);
-        notify(RepositoryEvents.POST_SAVE,obj);
+        notify(obj);
     }
 
     public final void update(O obj){
-        notify(RepositoryEvents.PRE_UPDATE,obj);
         this.dao.update(obj);
-        notify(RepositoryEvents.POST_UPDATE,obj);
+        notify(obj);
     }
 
     public final O loadOne(K k){
         O obj = this.dao.loadOne( k);
-        notify(RepositoryEvents.POST_LOAD,obj);
+        notify(obj);
         return obj;
     }
 
