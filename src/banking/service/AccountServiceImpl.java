@@ -74,10 +74,13 @@ public class AccountServiceImpl implements AccountService {
 		}
 
 		AccountEntry entry = new AccountEntry(-amount, "Withdraw", accountNumber);
-		entry.setAccount(account);
-		accountEntryRepository.save(entry);
-		account.addEntry(entry);
-		accountRepository.update(account);
+		if(account.getBalance()-amount >= 0) {
+			entry.setAccount(account);
+			accountEntryRepository.save(entry);
+			account.addEntry(entry);
+			accountRepository.update(account);
+		}
+
 	}
 
 	@Override
