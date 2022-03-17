@@ -35,7 +35,7 @@ public class CreditCardAccountServiceImpl implements AccountService {
 
     private CreditCardAccountServiceImpl() {
         accountRepository = new AccountRepository();
-        accountRepository.addObserver(new AccountUpdateObserver());
+        //accountRepository.addObserver(new AccountUpdateObserver());
         customerRepository = new CustomerRepository();
         accountEntryRepository = new AccountEntryRepository();
         accountEntryRepository.addObserver(new AccountEntryObserver());

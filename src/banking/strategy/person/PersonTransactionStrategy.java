@@ -15,9 +15,9 @@ public class PersonTransactionStrategy implements TransactionAlertStrategy {
             if(Math.abs(((AccountEntry)o).getAmount()) > 500  ){
 
                 EmailMessage message = new EmailMessage(
-                        ((AccountEntry)o).getAccount().getCustomer().getEmail(), //to
-                        "Account Transaction", //subject
-                        "Personal Account >> Deposit Transaction: "
+                        ((AccountEntry)o).getAccount().getCustomer().getEmail(),
+                        "Account Transaction",
+                         " Personal Account >> "+((AccountEntry)o).getDescription()+" Transaction: "
                                 + ((AccountEntry)o).getAccount().getId() + ", amount: " + ((AccountEntry)o).getAmount());
                 (new SendEmailNotification(message)).send();
             }

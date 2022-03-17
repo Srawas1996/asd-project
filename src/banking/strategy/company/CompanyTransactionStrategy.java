@@ -13,7 +13,8 @@ public class CompanyTransactionStrategy implements TransactionAlertStrategy {
     public void checkForAlert(Object o) {
         if(o instanceof AccountEntry){
             EmailMessage message = new EmailMessage(((AccountEntry)o).getAccount().getCustomer().getEmail(),
-                    "Company Account Transaction","Company Account >> Deposit on account#: "
+                    "Company Account Transaction","Company Account >> "+
+                    ((AccountEntry)o).getDescription() +" on account#: "
                     + ((AccountEntry)o).getAccount().getId() + ", amount: " + ((AccountEntry)o).getAmount());
             (new SendEmailNotification(message)).send();
         }

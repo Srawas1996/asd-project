@@ -20,7 +20,6 @@ public class AccountServiceImpl implements AccountService {
 	CustomerRepository customerRepository;
 	AccountEntryRepository accountEntryRepository;
 
-	// Singleton instance
 	private static AccountServiceImpl instance = null;
 
 
@@ -33,7 +32,7 @@ public class AccountServiceImpl implements AccountService {
 
 	private AccountServiceImpl(){
 		accountRepository = new AccountRepository();
-		accountRepository.addObserver(new AccountUpdateObserver());
+		//accountRepository.addObserver(new AccountUpdateObserver());
 		customerRepository = new CustomerRepository();
 		accountEntryRepository = new AccountEntryRepository();
 		accountEntryRepository.addObserver(new AccountEntryObserver());
